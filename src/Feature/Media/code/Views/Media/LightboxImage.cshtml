@@ -15,15 +15,20 @@
   const int ThumbnailWidth = 750;
   const int maxWidth = 1200;
   var thumbnailField = Model.Item.FieldHasValue(Templates.HasMedia.Fields.Thumbnail) ? Templates.HasMedia.Fields.Thumbnail : Templates.HasMediaImage.Fields.Image;
-  var thumbnail = Html.Sitecore().ImageField(thumbnailField.ToString(), Model.Item, mw: ThumbnailWidth, cssClass: "img-responsive");
+  var thumbnail = Html.Sitecore().ImageField(thumbnailField, Model.Item, mw: ThumbnailWidth, cssClass: "img-responsive");
   if (string.IsNullOrWhiteSpace(thumbnail?.ToString()))
   {
     return;
   }
 }
 
-<div class="thumbnail lightbox-item">
-	<a href="@Model.Item.ImageUrl(Templates.HasMediaImage.Fields.Image, new MediaUrlOptions(maxWidth, 0, false))" data-type="image" data-title="@Model.Item[Templates.HasMedia.Fields.Title]" data-footer="@Html.Encode(Html.Sitecore().Field(Templates.HasMedia.Fields.Description.ToString(), Model.Item))" data-toggle="lightbox" data-gallery="page">
-		@thumbnail
-	</a>
+<div class="thumbnail mosaic mosaic-circle lightbox-item lightbox-image">
+  <div class="mosaic-overlay mosaic-overlay-no-pointer">
+    <span class="fa fa-search-plus icon-lg"></span>
+  </div>
+  <div class="mosaic-backdrop">
+    <a href="@Model.Item.ImageUrl(Templates.HasMediaImage.Fields.Image, new MediaUrlOptions(maxWidth, 0, false))" data-type="image" data-title="@Model.Item[Templates.HasMedia.Fields.Title]" data-footer="@Html.Encode(Html.Sitecore().Field(Templates.HasMedia.Fields.Description, Model.Item))" data-toggle="lightbox" data-gallery="page">
+      @thumbnail
+    </a>
+  </div>
 </div>

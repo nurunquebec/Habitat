@@ -16,6 +16,17 @@
   </Metadata>
   <SaveProject>True</SaveProject>
   <Sources>
+    <accounts>
+      <Entries />
+      <Converter>
+        <AccountToEntryConverter>
+          <Transforms />
+        </AccountToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Roles</Name>
+    </accounts>
     <xfiles>
       <Entries />
       <Converter>
@@ -58,6 +69,56 @@
       <Exclude />
       <Name>Habitat items</Name>
     </xitems>
+    <xfiles>
+      <Entries />
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>DomainsConfig</Name>
+    </xfiles>
+    <files>
+      <Root>/temp/transforms</Root>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include>
+        <FileNameFilter>
+          <Pattern />
+          <AcceptDirectories>False</AcceptDirectories>
+        </FileNameFilter>
+        <FileDateFilter>
+          <FilterType>CreatedFilter</FilterType>
+          <ActionDateTo />
+          <ActionDateFrom />
+          <NotOlderThan />
+        </FileDateFilter>
+        <FileDateFilter>
+          <FilterType>ModifiedFilter</FilterType>
+          <ActionDateTo />
+          <ActionDateFrom />
+          <NotOlderThan />
+        </FileDateFilter>
+      </Include>
+      <Exclude />
+      <Name>transforms</Name>
+    </files>
   </Sources>
   <Converter>
     <TrivialConverter>
